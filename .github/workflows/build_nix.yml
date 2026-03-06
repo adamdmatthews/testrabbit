@@ -10,5 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v26
+      - name: Checking formatting
+        run: nix develop -c cargo fmt --check
+      - name: Linting
+        run: nix develop -c cargo clippy --all-targets -- -D warnings
       - name: Building package
-        run: nix build 
+        run: nix build
+        
