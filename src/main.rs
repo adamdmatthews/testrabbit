@@ -1,3 +1,5 @@
+#![warn(clippy::all, clippy::pedantic)]
+
 use std::time::Duration;
 
 use tokio::time::interval;
