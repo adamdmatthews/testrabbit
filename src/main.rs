@@ -14,9 +14,10 @@ struct Args {
 #[tokio::main]
 async fn main() {
     let args = Args::parse();
+    let name = whoami::realname().unwrap_or_else(|_| whoami::username().unwrap_or("World".into()));
     let mut ticker = interval(Duration::from_secs(args.seconds));
     loop {
         ticker.tick().await;
-        println!("Hello, world!");
+        println!("Hello, {name}!");
     }
 }
